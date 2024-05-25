@@ -1,0 +1,267 @@
+[
+    {
+        "id": "32c2f27c0b23e42a",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3c9fd4486fe65819",
+        "type": "serial in",
+        "z": "32c2f27c0b23e42a",
+        "name": "",
+        "serial": "b55a9e9c9620faa7",
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "e68de503d8f80c91"
+            ]
+        ]
+    },
+    {
+        "id": "afbc69b735679f09",
+        "type": "switch",
+        "z": "32c2f27c0b23e42a",
+        "name": "",
+        "property": "recipient",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 470,
+        "y": 240,
+        "wires": [
+            [
+                "8412e59940e34b67",
+                "52a88d276089154a"
+            ],
+            [
+                "6036cdf69031b97b",
+                "52a88d276089154a"
+            ],
+            [
+                "6fcc4204c713b219",
+                "52a88d276089154a"
+            ],
+            [
+                "f57c5af60cfc71cb",
+                "52a88d276089154a"
+            ],
+            [
+                "2d9d94e7fd58cd6f",
+                "52a88d276089154a"
+            ]
+        ]
+    },
+    {
+        "id": "6036cdf69031b97b",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "32c2f27c0b23e42a",
+        "name": "Caio Wpp",
+        "credtype": "account",
+        "account": "d9860f434edba998",
+        "text": "Seja bem-vindo ao ICr! Acesse agora sua consulta e confira o local de atendimento: https://vikcarvalhos.github.io/ComPasso/consulta/a9d14898.html",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "str",
+        "rejectssl": false,
+        "x": 720,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6fcc4204c713b219",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "32c2f27c0b23e42a",
+        "name": "Erick Wpp",
+        "credtype": "account",
+        "account": "08ce2e573c74be96",
+        "text": "Seja bem-vindo ao ICr! Acesse agora sua consulta e confira o local de atendimento: https://vikcarvalhos.github.io/ComPasso/consulta/29159b99.html",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "str",
+        "rejectssl": false,
+        "x": 730,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2d9d94e7fd58cd6f",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "32c2f27c0b23e42a",
+        "name": "Jorge Wpp",
+        "credtype": "account",
+        "account": "02ff88cfde39f7cd",
+        "text": "Seja bem-vindo ao ICr! Acesse agora sua consulta e confira o local de atendimento: https://vikcarvalhos.github.io/ComPasso/consulta/49499d98.html",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "str",
+        "rejectssl": false,
+        "x": 730,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e68de503d8f80c91",
+        "type": "function",
+        "z": "32c2f27c0b23e42a",
+        "name": "function 4",
+        "func": "// Supondo que o payload contenha o ID do cartão RFID como string\nlet cardId = msg.payload.trim();  // Remova espaços em branco, se houver\n\n// Mapeamento de IDs de cartões para destinatários de mensagens\nlet recipients = {\n    \"29094cb8\": \"1\",\n    \"a9d14898\": \"2\",\n    \"29159b99\": \"3\",\n    \"999fef97\": \"4\",\n    \"49499d98\": \"5\"\n    // Adicione mais mapeamentos conforme necessário\n};\n\n// Verifica se o ID do cartão está no mapeamento\nif (recipients.hasOwnProperty(cardId)) {\n    msg.recipient = recipients[cardId];\n} else {\n    msg.recipient = \"unknown\"; // Caso o ID não seja encontrado\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 240,
+        "wires": [
+            [
+                "afbc69b735679f09"
+            ]
+        ]
+    },
+    {
+        "id": "8412e59940e34b67",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "32c2f27c0b23e42a",
+        "name": "Diana Wpp",
+        "credtype": "account",
+        "account": "4b6ffd8f551f576d",
+        "text": "Seja bem-vindo ao ICr! Acesse agora sua consulta e confira o local de atendimento: https://vikcarvalhos.github.io/ComPasso/consulta/29094cb8.html",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "str",
+        "rejectssl": false,
+        "x": 730,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f57c5af60cfc71cb",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "32c2f27c0b23e42a",
+        "name": "João Wpp",
+        "credtype": "account",
+        "account": "0b35455ac51c6b1a",
+        "text": "Seja bem-vindo ao ICr! Acesse agora sua consulta e confira o local de atendimento: https://vikcarvalhos.github.io/ComPasso/consulta/999fef97.html",
+        "phonenumbervalue": "",
+        "apikeyvalue": "",
+        "apikeyinputtypemessage": "msg",
+        "phonenumberinputtypemessage": "msg",
+        "inputtypemessage": "str",
+        "rejectssl": false,
+        "x": 720,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "52a88d276089154a",
+        "type": "debug",
+        "z": "32c2f27c0b23e42a",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b55a9e9c9620faa7",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM10",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "d9860f434edba998",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": ""
+    },
+    {
+        "id": "08ce2e573c74be96",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": ""
+    },
+    {
+        "id": "02ff88cfde39f7cd",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": ""
+    },
+    {
+        "id": "4b6ffd8f551f576d",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": ""
+    },
+    {
+        "id": "0b35455ac51c6b1a",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": ""
+    }
+]
