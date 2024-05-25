@@ -1,5 +1,12 @@
 # ComPasso - Sprint 4 - Edge
 
+# Responsáveis
+Caio Hideki Cardenas Ishizu - 553630
+Diana Letícia de Souza Inocencio - 553562
+Jorge Henrique Freire Booz - 552700
+Erick Molina Barreiros - 553852
+João Viktor Carvalho de Souza - 552613
+
 # Descrição
 Esse é um projeto em IoT utilizado para a solução apresentada ao Hospital das Clinicas, nomeada de ComPasso.
 A solução em IoT tem como foco cadastrar usuários utilizando a tecnologia de RFID para fornecer cartões a cada um dos pacientes.
